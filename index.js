@@ -13,7 +13,7 @@ app.use(function(req, res, next){
     
 })
 app.get("/" , (req,res) => {
-    res.send("welcome from nodejs google cloud run")
+    res.send("welcome from nodejs google cloud run version1")
 } )
 app.use("/api/v1", createvm)
 app.use("/api/v1/", fake)
