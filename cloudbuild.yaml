@@ -1,0 +1,27 @@
+steps:
+  # Step 1: Checkout the source code from your repository.
+  - name: 'node'
+    entrypoint: 'bash'
+    args: ['-c', 'npm install']
+  - name: 'node'
+    entrypoint: 'bash'
+    args: ['-c', 'npm run create-env']
+    env:
+      - 'PORT=${_PORT}'
+      - 'AUTHSECRET=${_AUTHSECRET}'
+      - 'VERIFY_KEY_PAYLOAD=${_VERIFY_KEY_PAYLOAD}'
+
+  # Step 3: Build the Docker image.
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-west2-docker.pkg.dev/pacific-diode-396304/ai-com-gcp-run/ai-com:latest', '.']
+
+  # Step 4: Push the Docker image to Google Container Registry (GCR).
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-west2-docker.pkg.dev/pacific-diode-396304/ai-com-gcp-run/ai-com:latest']
+
+  
+
+# Define environment variables to be passed into the build.
+
+ 
+  
