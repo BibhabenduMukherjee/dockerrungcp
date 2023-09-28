@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const createvm = require('./routes/createvm');
 const app = express(); 
+const comd = require('./routes/comd')
 app.use(cors());
 const fake = require('./routes/fake');
 require("dotenv").config()
@@ -13,10 +14,11 @@ app.use(function(req, res, next){
     
 })
 app.get("/" , (req,res) => {
-    res.send("welcome from nodejs google cloud run version1")
+    res.send("welcome from nodejs google cloud run version2")
 } )
 app.use("/api/v1", createvm)
 app.use("/api/v1/", fake)
+app.use("/api/v1", comd)
 
  
 
