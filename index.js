@@ -14,7 +14,7 @@ app.use(function(req, res, next){
     
 })
 app.get("/" , (req,res) => {
-    res.send("welcome from nodejs google cloud run version2")
+    res.send("welcome from nodejs google cloud run version3")
 } )
 app.use("/api/v1", createvm)
 app.use("/api/v1/", fake)
